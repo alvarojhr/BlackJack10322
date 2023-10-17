@@ -1,0 +1,68 @@
+It is the test of the class we chose. ATT. Samuel ARANGOMpackage models;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test; //<---- Estas importaciones cumplen con la funcoon de la prueba de test
+
+//Continuamente se hace clic en el boton derecho de editor del archivo de prueba y seleccionar el run as
+//o debug y JUnit test para probar el codigo con el test unitario
+
+public class Test {
+
+	private Deck deck;
+
+	@BeforeEach
+	public void setUp() {
+		deck = new Deck();
+	}
+
+	@Test
+	public void testDeckSize() {
+		assertEquals(52, deck.cards.size());
+	}
+
+	@Test
+	public void testDrawCard() {
+		Card drawnCard = deck.draw();
+		assertEquals(51, deck.cards.size());
+		assertNotNull(drawnCard);
+	}
+
+	@Test
+	public void testShuffledDeck() {
+		Deck secondDeck = new Deck();
+
+		// Check that two different decks are not the same
+		assertNotEquals(deck.cards, secondDeck.cards);
+
+		// Check that the decks have the same cards but in a different order
+		Set<Card> firstDeckSet = new HashSet<>(deck.cards);
+		Set<Card> secondDeckSet = new HashSet<>(secondDeck.cards);
+		assertEquals(firstDeckSet, secondDeckSet);
+	}
+}
+
+public class TestRunner {
+    public static void main(String[] args) {
+        Launcher launcher = LauncherFactory.create();
+        SummaryGeneratingListener listener = new SummaryGeneratingListener();
+
+        launcher.execute(request -> {
+            request.selectPackage("models"); 
+            request.filters(
+                includeClassNamePatterns(".*Test") 
+            );
+            request.addListener(listener);
+        });
+
+        listener.getSummary().printTo(System.out);
+    }
+}
+
