@@ -50,6 +50,19 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.0</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>cc.nabi.web</groupId>
+            <artifactId>nabi-tencent-core</artifactId>
+            <version>1.0.0</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <properties>
