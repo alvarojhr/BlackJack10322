@@ -22,6 +22,8 @@ public class Game {
     public Deck getDeck() {
         return deck;
     }
+    
+    
 
     public void dealInitialCards() {
         player.getHand().addCard(deck.draw());
